@@ -5,14 +5,14 @@ import java.util.Stack;
 public class DeckOfCards {
     private static final int CARD_COUNT = 52;
     private Card[] deck = new Card[CARD_COUNT];
-    private Stack<Card> shuffledDeck = new Stack<Card>();
+    private Stack<Card> shuffledDeck = new Stack<Card>(); // shuffled deck
 
     public DeckOfCards() { //initializes array of cards, puts all cards into array
         String[] faces = {"Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight",
         "Nine", "Ten", "Jack", "Queen", "King",};
         String[] suits = {"Hearts", "Diamonds", "Spades", "Clubs"};
 
-        for (int count = 0; count < deck.length; count++) {
+        for (int count = 0; count < deck.length; count++) { // puts cards in deck
             deck[count] = new Card(faces[count % 13], suits[count / 13]);
         }
     }
@@ -41,7 +41,7 @@ public class DeckOfCards {
         card = card.substring(0, i);
         switch(card) {
             case "Ace":
-                System.out.println("You drew an Ace! Would you like the Ace to be one or eleven? Type '1' or '11': ");
+                System.out.println("You drew an Ace! Would you like the Ace to be one or eleven? (Type '1' or '11'): ");
                 int aceValue = input.nextInt();
                 return aceValue;
             case "Deuce":
