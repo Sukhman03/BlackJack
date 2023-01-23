@@ -21,6 +21,7 @@ public class PlayGame {
         if (playerCardValues < 22 ) { // game will stop the game if the player draws 2 (11 point) Aces on first turn
             hitOrStand = hitOrStand();
         }
+        
         while (hitOrStand == 'H') {
             if (playerCardValues > 21) { // if player loses, stop
                 break;
@@ -35,9 +36,11 @@ public class PlayGame {
                     hitOrStand = hitOrStand();
                 }
         }
+        
         while (dealersCardValue < 17) { // ensures dealer hits 17 after player stands
             dealerPlay(false);
         }
+        
         if (playerCardValues < 22 && dealersCardValue < playerCardValues) { // ensures that if dealer stops at 17
             while (dealersCardValue < 22) {                                 // player cannot stop and win at 18-20
                 dealerPlay(true);                                               // with the dealer giving up
@@ -51,6 +54,7 @@ public class PlayGame {
         System.out.println("\nWould you like to Hit or Stand?");
         return scan.next().toUpperCase().charAt(0);
     }
+    
     public void hit() { // what happens if player chooses hit
         String drawCard = String.valueOf(deck.dealCard());
         playersHand[playersHandCount] = drawCard;
@@ -62,6 +66,7 @@ public class PlayGame {
     public int getDealerCardValue() { // gets dealerCardValue
         return dealersCardValue;
     }
+    
     public void results() { // prints out the results based on the ending
         System.out.println("\nFinal Cards: \n"); // prints out the final hands after game over
         printCards();
@@ -104,6 +109,7 @@ public class PlayGame {
             System.out.println();
         }
     }
+    
     public void printCards() {
         System.out.println("Your Hand: ");
         for (int i = 0; i < playersHandCount; i++) {
@@ -116,6 +122,7 @@ public class PlayGame {
         }
         System.out.println("Card Value: " + dealersCardValue);
     }
+    
     public void firstTwoCards() { // gives the dealer and player the initial two cards
         for (int i = 0; i < 2; i++) {
             String drawCard = String.valueOf(deck.dealCard());
